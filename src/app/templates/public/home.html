@@ -1,0 +1,198 @@
+{% extends 'public/base.html' %}
+
+
+{% block style %}
+<style>
+    .carousel-caption{
+        bottom: -0.50rem!important;
+    }
+</style>
+{% endblock %}
+
+
+
+
+{% block main %}
+
+	<!-- HERO -->
+    <section class="hero-section">
+        <div class="container col-xxl-10 hero-container" id="hero">
+        <!-- <div class="container px-5 py-2" id="hero"> -->
+            <div class="row flex-lg-row-reverse align-items-center py-1">
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="static/assets/man-rating-course.svg" class="d-block mx-lg-auto img-fluid" alt="Welcome the app" loading="lazy" width="auto" height="auto">
+                </div>
+                <div class="col m-5">
+                    <h1>WELCOME TO THE UoLCS STUDENT APP</h1>
+                    <h2 style="font-size: 50px;">WE WANT YOUR</h2>
+                    <h2><strong style="color: #2948a4; font-size: 70px; line-height: 0.6;">FEEDBACK!</strong></h2>
+                    <p style="font-size: 20px;">Students of the UoL-CS program can find, view, and review modules to help plan ahead.</p>
+                    <a class="btn btn-primary" href="/sign-up">Sign Up</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-icons text-center m-3" id="features">
+        <div class="container">
+            <h1 class="text-center">Features</h1>
+            <div class="row">
+                <div class="col">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <!-- <div class="features-icons-icon d-flex"><i class="bi-star-fill m-auto" style="font-size:60px;"></i></div> -->
+                        <img class="features-pic" src="static/assets/module-ratings.png" alt="Welcome the app" loading="lazy" width="auto" height="200">
+                        <h3>Class Reviews</h3>
+                        <p class="lead mb-0">See how your fellow students rate different modules and leave your own feedback</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <!-- <div class="features-icons-icon d-flex"><i class="bi-journal-text m-auto" style="font-size:60px;"></i></div> -->
+                        <img class="features-pic" src="static/assets/degree-planner-screen.png" alt="Welcome the app" loading="lazy" width="auto" height="200">
+                        <h3>Degree Planner</h3>
+                        <p class="lead mb-0">Plan the order in which you choose to take your Level 4, 5, and 6 Computer Science BSc modules</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <!-- <div class="features-icons-icon d-flex"><i class="bi-calculator m-auto" style="font-size:60px;"></i></div> -->
+                        <img class="features-pic" src="static/assets/grade-calculate.png" alt="Welcome the app" loading="lazy" width="auto" height="200">
+                        <h3>Grade Calculator</h3>
+                        <p class="lead mb-0">Calculate your current academic standing based on your past and current module grades</p>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+                        <!-- <div class="features-icons-icon d-flex"><i class="bi-book-half m-auto" style="font-size:60px;"></i></div> -->
+                        <img class="features-pic" src="static/assets/resources.png" alt="Welcome the app" loading="lazy" width="auto" height="200">
+                        <h3>Resources</h3>
+                        <p class="lead mb-0">See all relevant resources (suggested by students, gathered by admins) needed to succeed at your courses</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+ 
+    <!-- REVIEWS -->
+    <div class="container py-4" id="reviews">
+        <h4 class="text-center">Testimonials</h4>
+        <h3 class="text-center">What do our students say?</h3>
+        <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+              <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#fafafa"/></svg>
+            
+                    <div class="container">
+                        <div class="carousel-caption text-dark" id="testimony-caption">
+                            <p>"UoLCS Feedback helped me get a sense of how difficult the courses were going to be for me and the student comments had some very useful tips to get ahead of the course material. Feels good to be a part of student community at an online degree!"</p>
+                            <div class="review-info">
+                                <div class="row">
+                                    <div class="col-md-auto">
+                                        <img src="/static/assets/user-round.png" height="50" alt="UoLCS Feeback">
+                                    </div>
+                                    <div class="col-md-auto">
+                                        <p id="testimony-user">UoLCS Student</p>
+                                        <p id="testimony-cohort">April 2020 Cohort</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+
+                    <svg class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#fafafa"/></svg>
+
+                    <div class="container">
+                        <div class="carousel-caption text-dark" id="testimony-caption">
+                            <p>"It's a great app! Being able to plan my degree experience was a major game-changer! I can now schedule my degree around my work hours which seemed impossible before starting the program!"</p>
+                            <div class="review-info">
+                                <div class="row">
+                                    <div class="col-md-auto">
+                                        <img src="/static/assets/user-round.png" height="50" alt="UoLCS Feeback">
+                                    </div>
+                                    <div class="col-md-auto">
+                                        <p id="testimony-user">UoLCS Student</p>
+                                        <p id="testimony-cohort">April 2020 Cohort</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <svg class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#fafafa"/></svg>
+            
+                    <div class="container">
+                        <div class="carousel-caption text-dark" id="testimony-caption">
+                            <p>"It changed my degree experience for the better! Calculating my current average has helped me get a clear picture of where I stand academically. Reading module reviews was pivotal in my module selections each semester!"</p>
+                            <div class="review-info">
+                                <div class="row">
+                                    <div class="col-md-auto">
+                                        <img src="/static/assets/user-round.png" height="50" alt="UoLCS Feeback">
+                                    </div>
+                                    <div class="col-md-auto">
+                                        <p id="testimony-user">UoLCS Student</p>
+                                        <p id="testimony-cohort">April 2020 Cohort</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev" style="background-color:#2948a4;">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next" style="background-color:#2948a4;">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ABOUT US -->
+    <div class="container about-us" id="aboutUs">
+        <h1 class="text-center">About Us</h1>
+        <div class="row">
+            <div class="col">
+                <p>
+                    UoLCS Feedback is created and run by a team of University of London students enrolled in the Computer Science BSc 
+                    online-only degree programme. Enrolled in this innovative yet almost experimental degree, we - along with our fellow students - 
+                    were united in our common challenges of exploring and navigating the online-only curriculum. We observed that the University of 
+                    London-supplied material about the degree specifications were not always enough for our fellow students (and us!) to decide 
+                    among the many possible paths of taking the necessary courses. We personally felt that there had to be a better way to help 
+                    students familiarize themselves with the courses that lay in front of them before enrolling in them. We finally decided what 
+                    better resource for this than the feedback of other students who have already taken those courses!
+                </p>
+                <p>
+                    Our team consists of students with skills varying from back-end programming to graphic design. Feel free to contact us at <a class="text-secondary" href="mailto:uolcsfeedback@gmail.com">uolcsfeedback@gmail.com</a>.
+                </p>
+                <p>
+                    <b><i>UoLCS Feedback is an independent project and is neither affiliated with nor endorsed by the University of London.</i></b> 
+                </p>
+            </div>
+            <div class="col-md-auto">
+                <img src="/static/assets/about-us.png" width="300px" height="300px" alt="About Us">
+            </div>
+        </div>
+    </div>
+
+    <!-- FEEDBACK -->
+    <div class="container give-feedback p-5 text-center text-white rounded">
+        <p class="lead">We strive for high quality reviews that address the actual experiences from current students or alumni.</p>
+        <h1 class="p-4">Give your class feedback now.</h1>
+        <!-- <a class="btn btn-light btn-lg px-4">Reviews</a> -->
+        <a class="btn btn-light btn-lg px-4" href="{{ url_for('public.sign_up') }}">Sign Up</a>
+        <a class="btn btn-light btn-lg px-4" href="{{ url_for('public.sign_in') }}">Sign In</a>
+    </div>
+
+{% endblock %}

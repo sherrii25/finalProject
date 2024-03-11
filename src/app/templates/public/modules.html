@@ -1,0 +1,76 @@
+{% extends 'public/base2.html' %}
+
+
+
+{% block header %}
+<header>
+	<a href="\">
+		<img src="{{ url_for('static', filename='assets/logo_draft-03.jpg') }}" alt="Logo">
+	</a>
+	<nav>
+		<a href="/" class="nav-item nav-link home-btn">  Home</a>
+	</nav>
+	<div class="auth">
+		<a href="{{ url_for('public.sign_up') }}">Sign Up</a>
+				<a href="{{ url_for('public.sign_in') }}">Sign In</a>
+	</div>
+</header>
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container">
+
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h2>Module Ratings</h2>
+    </div>
+</div>
+
+
+<div class="content-wrapper mt-4">
+    <div class="row">
+      
+        <div class="col-md-12">
+            <div class="card spur-card">
+                    <div class="card-header">
+                        <div class="spur-card-title">Module Ratings</div>
+                    </div>
+                    <div class="card-body ">
+                        <table class="table table-in-card" id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Module Name</th>
+                                    <th scope="col">Rating</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                {% for item in modules %}
+
+                                <tr>
+                                    <td><a href="/module/{{item.module.code}}" class="module-name link">{{item.module.name}}</a></td>
+                                    <td><span class="stars"> {{item.overallAvg}}</span></td>
+                                </tr>
+                                
+
+                                {% endfor %}
+                                
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+{% endblock %}
+
+
+
+

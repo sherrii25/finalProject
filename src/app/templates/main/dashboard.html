@@ -1,0 +1,170 @@
+{% extends 'main/base.html' %}
+
+
+{% block main %}
+
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h2>UOLCS Student App dashboard</h2>
+    </div>
+    <div class="col-md-6 text-end">
+        <a class="btn btn-primary" href="/modules"><i class="fa fa-plus" aria-hidden="true"></i> Add Review </a>
+    </div>
+</div>
+
+
+<div class="content-wrapper mt-4">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="my-card">
+                        <div class="my-card-content">
+                            <i class="fas fa-book-open"></i>
+                            <h2>{{allmodules|length}}</h2>
+                            <p>Total Module</p>
+                        </div>
+                        <div class="my-card-footer">
+                            <a href="/modules" class="link">
+                                View all Modules 
+                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="my-card reviews-card">
+                        <div class="my-card-content">
+                            <i class="fa fa-comments" aria-hidden="true"></i>
+                            <h2>{{allReviews | length}}</h2>
+                            <p>Total Reviews</p>
+                        </div>
+                        <div class="my-card-footer">
+                            <a href="/modules" class="link">
+                                View all Reviews 
+                                <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-12 mt-5">
+                    <div class="card spur-card">
+                        <div class="card-header">
+                            <div class="spur-card-title">Top Rated Modules</div>
+                        </div>
+                        <div class="card-body ">
+                            <table class="table table-hover table-in-card noHover" id="usersTable">  
+                                <tbody>
+                                    {% for item in modules %}
+                                    <tr>
+                                        <td>
+                                            <h3 class="module-name">{{item.module.name}}</h3>
+                                            <div class="ratings">
+                                                <div class="row">
+                                                    <div class="col-md-4 my-2">
+                                                        <span class="rating-title">Time Requirement</span> 
+                                                        <span class="stars" style="display: inline-block;"> {{item.rating.time.avg}}</span>
+                                                    </div>
+                                                    <div class="col-md-4 my-2">
+                                                        <span class="rating-title">Time Requirement</span> 
+                                                        <span class="stars" style="display: inline-block;"> {{item.rating.midterm.avg}}</span>
+                                                    </div>
+                                                    <div class="col-md-4 my-2">
+                                                        <span class="rating-title">Time Requirement</span> 
+                                                        <span class="stars" style="display: inline-block;"> {{item.rating.final.avg}}</span>
+                                                    </div>
+                                                    <div class="col-md-4 my-2">
+                                                        <span class="rating-title">Time Requirement</span> 
+                                                        <span class="stars" style="display: inline-block;"> {{item.rating.lecture.avg}}</span>
+                                                    </div>
+                                                    <div class="col-md-4 my-2">
+                                                        <span class="rating-title">Time Requirement</span> 
+                                                        <span class="stars" style="display: inline-block;"> {{item.rating.usefulness.avg}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr> 
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+        <div class="col-md-6">
+            <div class="card spur-card">
+                    <div class="card-header">
+                        <div class="spur-card-title">Your Review History</div>
+                    </div>
+                    <div class="card-body ">
+                        <table class="table table-hover table-in-card" id="usersTable">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Module Name</th>
+                                    <th scope="col">Date</th>
+                                    <th scope="col">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                
+                                {% for item in myreviews %}
+                                <tr>
+                                    <td>{{item.module.name}}</td>
+                                    <td>{{item.created_on}}</td>
+                                    
+                                    <td class="">
+                                        <a class="link link-view" href="/module/{{item.module.code}}">View</a>
+                                        <a class="link link-edit">Edit</a>
+                                        <a class="link link-delete" data-bs-toggle="modal" data-bs-target="#myModal">Delete</a>
+
+
+                                        <!-- Modal HTML -->
+                                        <div id="myModal" class="modal fade">
+                                            <div class="modal-dialog modal-confirm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header flex-column">			
+                                                        <h4 class="modal-title w-100">Are you sure?</h4>	
+                                                        <button type="button" class="close" data-bs-dismiss="modal" aria-hidden="true">&times;</button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Do you really want to delete these records? This process cannot be undone.</p>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center">
+                                                        <form action="rating/{{item.id}}/delete" method="POST">
+                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+
+                                    </td>
+                                    
+                                </tr>
+                                {% endfor %}
+
+                                
+                                
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

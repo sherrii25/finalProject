@@ -1,0 +1,123 @@
+{% extends 'main/base.html' %}
+
+
+{% block main %}
+
+
+
+<div class="row align-items-center">
+	<div class="col-md-3 ">
+		<h4>Degree Planner</h4>
+	</div>
+	<div class="col-md-9">
+		<div>
+			<div class="card spur-card">
+				<div class="card-header" style=" background-color: #2948a4; color: white; ">
+					<div class="spur-card-title">Data</div>
+				</div>
+				<div class="card-body ">
+					<div class="row">
+						<div class="col-md-4 mb-3">
+							<span>Actual Average Grade: {{data.actualAvg}}</span>
+						</div>
+						<div class="col-md-4 mb-3">
+							<span>Manual Predicted Grade: {% if data.manualPredicted != 0 %} {{data.manualPredicted}} {%
+								endif %}</span>
+						</div>
+						<div class="col-md-4 mb-3">
+							<span>No of modules remaining: {{data.modulesRemaining}}</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+<div class="content-wrapper mt-4">
+	<form action="" method="POST">
+		<div class="row">
+			{% for mod in modules %}
+			<div class="col-md-4">
+				<div class="card spur-card">
+					<div class="card-header">
+						<div class="spur-card-title">Year {{mod.year}}</div>
+					</div>
+					<div class="card-body ">
+						{%for i in range(0, 8)%}
+						<div class="row mb-4">
+							<div class="col-sm-6 px-1">
+								<select class="form-control mb-2" name="mod{{mod.year}}{{i}}" value="">
+									<option>Select</option>
+									{% for item in mod.mods %}
+
+									{% if i in selections[mod.year] and selections[mod.year][i].moduleCode == item.code %}
+									<option selected value="{{item.code}}" id="mod{{mod.year}}{{i}}_{{item.code}}">{{item.name}}
+									</option>
+									{% else %}
+									<option value="{{item.code}}" id="mod{{mod.year}}{{i}}_{{item.code}}">{{item.name}}
+									</option>
+									{% endif %}
+									{% endfor %}
+								</select>
+
+							</div>
+							<div class="col-sm-3 px-1">
+								{% if i in selections[mod.year] and selections[mod.year][i].predicted >= 0 %}
+								<input type="number" min="0" max="100" class="form-control" placeholder="Predicted grade"
+									name="pred{{mod.year}}{{i}}" id="pred{{mod.year}}{{i}}" value="{{selections[mod.year][i].predicted}}">
+								{% else %}
+								<input type="number" min="0" max="100" class="form-control" placeholder="Predicted grade"
+									name="pred{{mod.year}}{{i}}" id="pred{{mod.year}}{{i}}" value="">
+								{% endif %}
+							</div>
+							<div class="col-sm-3 px-1">
+								{% if i in selections[mod.year] and selections[mod.year][i].actual >= 0 %}
+								<input type="number" min="0" max="100" class="form-control" placeholder="Actual grade"
+									name="act{{mod.year}}{{i}}" id="act{{mod.year}}{{i}}" value="{{ selections[mod.year][i].actual }}">
+								{% else %}
+								<input type="number" min="0" max="100" class="form-control" placeholder="Actual grade"
+									name="act{{mod.year}}{{i}}" id="act{{mod.year}}{{i}}" value="">
+								{% endif %}
+							</div>
+						</div>
+
+						{%endfor%}
+					</div>
+				</div>
+			</div>
+			{%endfor%}
+		</div>
+		<div class="text-center py-3">
+			<input type="submit" value="Update" class="btn btn-primary">
+		</div>
+	</form>
+
+
+
+	{% if formdata != None %}
+	{% for key,value in formdata %}
+
+	<script>
+		document.getElementById("{{key}}_{{value}}").selected = true;
+	</script>
+
+	<script>
+		document.getElementById("{{key}}").value = "{{value}}";
+	</script>
+
+	{%endfor%}
+	{% endif %}
+
+
+
+
+</div>
+
+
+
+
+{% endblock %}

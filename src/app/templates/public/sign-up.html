@@ -1,0 +1,38 @@
+{% extends 'public/base2.html' %}
+
+{% block header %}
+<header>
+	<a href="\">
+		<img src="{{ url_for('static', filename='assets/logo_draft-03.jpg') }}" alt="Logo">
+	</a>
+	<nav>
+		<a href="/" class="nav-item nav-link home-btn">  Home</a>
+	</nav>
+	<div class="auth">
+		<a href="{{ url_for('public.sign_in') }}">Sign In</a>
+	</div>
+</header>
+{% endblock %}
+
+
+{% block main %}
+<div class="content">
+	<h1>
+		Sign Up
+	</h1>
+	{% include 'partials/form.html' %}
+</div>
+{% endblock %}
+
+{% block style %}
+<style>
+	.content {
+		align-items: center;
+	}
+
+	.content .form {
+		width: 30rem;
+	}
+</style>
+
+{% endblock %}

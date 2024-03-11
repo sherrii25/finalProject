@@ -1,0 +1,273 @@
+{% extends 'main/base.html' %}
+
+
+{% block main %}
+
+
+<div class="row">
+    <div class="col-md-6">
+        <h2 class="module-name" style="font-size: 40px;">{{module.name}}</h2>
+        <h5><strong>Course Code:</strong> {{module.code}}</h5>
+        <h5><strong>Level:</strong> {{module.level}}</h5>
+        <h5><strong>Professor(s):</strong> {{module.professor}}</h5>
+        <h5><i>{{module.moduleDescription}}</i> </h5>
+        <h5><strong>Assessment:</strong> {{module.assessment}}</h5>
+
+    </div>
+    <div class="col-md-6 text-end">
+        {% if myRatings|length == 0 %}
+        <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addReview"><i class="fa fa-plus" aria-hidden="true"></i> Add Review </a>
+        <div class="modal fade text-start" id="addReview" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" style=" min-width: 750px; ">
+              <div class="modal-content">
+                <form action="" method="POST">
+                    <div class="modal-header">
+                        <h6>Write a Review</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                    <div>
+                        <h2 class="module-name mb-3"> {{module.name}}</h2>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <label>Time Requirement</label>
+                                <span class="rating">
+                                    <input type="radio" required name="time" id="star5" value="5">
+                                    <label for="star5"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="time" id="star4" value="4">
+                                    <label for="star4"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="time" id="star3" value="3">
+                                    <label for="star3"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="time" id="star2" value="2">
+                                    <label for="star2"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="time" id="star1" value="1">
+                                    <label for="star1"><span class="fa fa-star"></span></label>
+                                </span>
+                            </div>
+        
+                            <div class="col-md-4">
+                                <label>Midterm Difficulty</label>
+                                <span class="rating">
+                                    <input type="radio" required name="midterm" id="midtermstar5" value="5">
+                                    <label for="midtermstar5"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="midterm" id="midtermstar4" value="4">
+                                    <label for="midtermstar4"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="midterm" id="midtermstar3" value="3">
+                                    <label for="midtermstar3"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="midterm" id="midtermstar2" value="2">
+                                    <label for="midtermstar2"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="midterm" id="midtermstar1" value="1">
+                                    <label for="midtermstar1"><span class="fa fa-star"></span></label>
+                                </span>
+                            </div>
+        
+                            <div class="col-md-4">
+                                <label>Overall Difficulty</label>
+                                <span class="rating">
+                                    <input type="radio" required name="final" id="finalstar5" value="5">
+                                    <label for="finalstar5"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="final" id="finalstar4" value="4">
+                                    <label for="finalstar4"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="final" id="finalstar3" value="3">
+                                    <label for="finalstar3"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="final" id="finalstar2" value="2">
+                                    <label for="finalstar2"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="final" id="finalstar1" value="1">
+                                    <label for="finalstar1"><span class="fa fa-star"></span></label>
+                                </span>
+                            </div>
+        
+                            <div class="col-md-4">
+                                <label>Lecture Quality</label>
+                                <span class="rating">
+                                    <input type="radio" required name="lectures" id="lecturesstar5" value="5">
+                                    <label for="lecturesstar5"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="lectures" id="lecturesstar4" value="4">
+                                    <label for="lecturesstar4"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="lectures" id="lecturesstar3" value="3">
+                                    <label for="lecturesstar3"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="lectures" id="lecturesstar2" value="2">
+                                    <label for="lecturesstar2"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="lectures" id="lecturesstar1" value="1">
+                                    <label for="lecturesstar1"><span class="fa fa-star"></span></label>
+                                </span>
+                            </div>
+        
+        
+                            <div class="col-md-4">
+                                <label>Usefulness &nbsp;</label>
+                                <span class="rating">
+                                    <input type="radio" required name="usefullness" id="usefullnessstar5" value="5">
+                                    <label for="usefullnessstar5"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="usefullness" id="usefullnessstar4" value="4">
+                                    <label for="usefullnessstar4"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="usefullness" id="usefullnessstar3" value="3">
+                                    <label for="usefullnessstar3"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="usefullness" id="usefullnessstar2" value="2">
+                                    <label for="usefullnessstar2"><span class="fa fa-star"></span></label>
+                                    
+                                    <input type="radio" required name="usefullness" id="usefullnessstar1" value="1">
+                                    <label for="usefullnessstar1"><span class="fa fa-star"></span></label>
+                                </span>
+                            </div>
+        
+                            <div class="col-md-12 mb-2">
+                                <label>Pros</label>
+                                <textarea class="form-control" name="pros" rows="5"></textarea>
+                            </div>
+        
+                            <div class="col-md-12">
+                                <label>Cons</label>
+                                <textarea class="form-control" name="cons" rows="5"></textarea>
+                            </div>
+        
+                            
+                        </div>
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+              </div>
+            </div>
+        </div>
+        {% else %}
+        <a class="btn btn-secondary noHover" disabled> Reviewed </a>
+        {% endif %}
+    </div>
+</div>
+
+
+
+
+<div class="content-wrapper mt-4">
+    <div class="row">
+      <div class="col-sm-2">
+            <div class="rating-box text-center">
+                <h6 class="mb-2">Time Requirement</h6>
+                <span class="stars" style="margin: 0px auto;"> {{ratings.time.avg}}</span>
+                <p class="mt-2 mb-0">{{ratings.time.count}} Reviews</p>
+            </div>
+      </div>
+      <div class="col-sm-2">
+                <div class="rating-box text-center">
+                    <h6 class="mb-2">Midterm Difficulty</h6>
+                    <span class="stars" style="margin: 0px auto;"> {{ratings.midterm.avg}}</span>
+                    <p class="mt-2 mb-0">{{ratings.midterm.count}} Reviews</p>
+                </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="rating-box text-center">
+                <h6 class="mb-2">Overall Difficulty &nbsp;</h6>
+                <span class="stars" style="margin: 0px auto;"> {{ratings.final.avg}}</span>
+                <p class="mt-2 mb-0">{{ratings.final.count}} Reviews</p>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="rating-box text-center">
+                <h6 class="mb-2">Lecture Quality &nbsp; &nbsp; &nbsp; </h6>
+                <span class="stars" style="margin: 0px auto;">  {{ratings.lecture.avg}}</span>
+                <p class="mt-2 mb-0">{{ratings.lecture.count}} Reviews</p>
+            </div>
+        </div>
+        <div class="col-sm-2">
+            <div class="rating-box text-center">
+                <h6 class="mb-2">Overall Usefulness </h6>
+                <span class="stars" style="margin: 0px auto;"> {{ratings.usefulness.avg}}</span>
+                <p class="mt-2 mb-0">{{ratings.usefulness.count}} Reviews</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row mt-4">
+        <div class="col-sm-12">
+            <div class="module-reviews">
+                <div class="head px-3 py-1">
+                    Reviews
+                </div>
+                <div class="reviews-list p-3">
+
+                    {% if allRatings|length == 0 %}
+                        <div style="padding: 50px; text-align: center;">No Reviews</div>
+                    {% endif %}
+                   
+                    {% for item in allRatings %}
+                    <div class="review">
+                        <h4>{{item.user.name}}</h4>
+                        <p class="date">{{item.created_on}} </p>
+                        <div class="ratings">
+                            <div class="row">
+                                <div class="col-md-4 my-2">
+                                    <span class="rating-title">Time Requirement</span> 
+                                    <span class="stars" style="display: inline-block;"> {{item.time}}</span>
+                                </div>
+                                <div class="col-md-4 my-2">
+                                    <span class="rating-title">Midterm Difficulty                                    </span> 
+                                    <span class="stars" style="display: inline-block;"> {{item.midterm}}</span>
+                                </div>
+                                <div class="col-md-4 my-2">
+                                    <span class="rating-title">Final Difficulty</span> 
+                                    <span class="stars" style="display: inline-block;"> {{item.final}}</span>
+                                </div>
+                                <div class="col-md-4 my-2">
+                                    <span class="rating-title">Lecture Quality</span> 
+                                    <span class="stars" style="display: inline-block;"> {{item.lectures}}</span>
+                                </div>
+                                <div class="col-md-4 my-2">
+                                    <span class="rating-title">Userfullness / value</span> 
+                                    <span class="stars" style="display: inline-block;"> {{item.usefulness}}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="my-2 pros">
+                            <h6>Pros</h6>
+                            <p>{{item.pros}}</p>
+                        </div>
+                        <div class="my-2 cons">
+                            <h6>Cons</h6>
+                            <p>{{item.cons}}</p>
+                        </div>
+                        <!-- <div class="like">
+                            Helpful Review?
+                            <button class="btn" id="green"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"></i></button>
+                            <button class="btn" id="red"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true"></i></button>
+                        </div> -->
+                    </div>
+                    <hr>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+    
+
+
+
+{% endblock %}
